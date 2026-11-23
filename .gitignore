@@ -1,0 +1,8 @@
+.env
+data/*.pbf
+data/*.osm
+__pycache__/
+*.qgz
+*.qgs
+data/gares-de-voyageurs.geojson
+data/mapconfig_pedestrian.xml

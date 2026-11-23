@@ -10,9 +10,9 @@ Application de webmapping qui permet, dans une carte **Lizmap**, de choisir un p
 
 Ce projet personnel s'appuie sur les données ouvertes (Open Data) des gares de voyageurs et d'OpenStreetMap. Le calcul d'itinéraire est réalisé directement par ma base de données **PostgreSQL / PostGIS / pgRouting**, sans dépendre d'une API externe de routage.
 
-**Mots-clés** : SIG, webmapping, Lizmap, QGIS, JavaScript, OpenLayers, PostgreSQL, PostGIS, pgRouting, FastAPI, Docker, OpenStreetMap.
+***Mots-clés :*** SIG, webmapping, Lizmap, QGIS, JavaScript, OpenLayers, PostgreSQL, PostGIS, pgRouting, FastAPI, Docker, OpenStreetMap.
 
-## Points clés
+**Points clés** :
 
 - **Routage dans la base de données** : le calcul d'itinéraire est fait en SQL avec `pgr_dijkstra` (pgRouting), sur un graphe issu d'OpenStreetMap. Aucune clé d'API n'est nécessaire, et aucun quota ne s'applique.
 - **Deux graphes** : un réseau routier pour la voiture (plus rapide) et un réseau piéton pour la marche (plus court).
@@ -21,7 +21,9 @@ Ce projet personnel s'appuie sur les données ouvertes (Open Data) des gares de 
 - **Transformation de projections** entre WGS84 (EPSG:4326, utilisé par la base et l'API) et le système de la carte Lizmap (EPSG:3857).
 - **Tout est conteneurisé avec Docker** : la base et l'API d'un côté, la pile Lizmap (Lizmap, QGIS Server, PostgreSQL, redis, nginx) de l'autre.
 
-## Fonctionnalités
+## Résumé :
+
+### :rocket: Fonctionnalités
 
 - Recherche d'une gare par son nom (liste cliquable)
 - Sélection du point de départ par un clic sur la carte
@@ -31,7 +33,7 @@ Ce projet personnel s'appuie sur les données ouvertes (Open Data) des gares de 
 - Zoom automatique sur le trajet
 - Bouton de réinitialisation
 
-## Architecture
+### 🏗️ Architecture
 
 ```
 Navigateur (carte Lizmap + widget JavaScript)
@@ -46,7 +48,7 @@ PostgreSQL + PostGIS + pgRouting
    - réseau piéton (foot_ways)
 ```
 
-## Technologies utilisées
+### :wrench: Technologies utilisées
 
 - **Lizmap Web Client 3.9** et **QGIS** (publication de la carte, plugin Lizmap)
 - **JavaScript** (widget intégré à Lizmap) et **OpenLayers** (affichage de la carte et du tracé)
@@ -55,12 +57,12 @@ PostgreSQL + PostGIS + pgRouting
 - **Python**, **FastAPI**, **psycopg**
 - **Docker** et **Docker Compose**
 
-## Données
+### 🗄️ Données
 
 - **Gares** : jeu de données « Gares de voyageurs » (SNCF, open data), limité au Pays basque français. Voir la licence sur data.sncf.com.
 - **Réseau routier et piéton** : OpenStreetMap, extrait Geofabrik découpé sur la zone. © les contributeurs d'OpenStreetMap (licence ODbL).
 
-## Organisation du dépôt (proposition)
+### 📂 Structure du dépôt
 
 ```
 api/                  API FastAPI (main.py, Dockerfile, requirements.txt)
@@ -71,14 +73,14 @@ docker-compose.yml    base de données et API
 .env.example          exemple de variables d'environnement
 ```
 
-## Lancement (résumé)
+### 🚀 Installation et lancement
 
 1. Copier `.env.example` en `.env` et choisir un mot de passe.
 2. Démarrer la base et l'API : `docker compose up -d --build`.
 3. Importer les gares et les réseaux OpenStreetMap dans PostgreSQL (osmium pour découper l'extrait, osm2pgrouting pour construire les graphes voiture et piéton).
 4. Installer Lizmap (dépôt `3liz/lizmap-docker-compose`), publier le projet QGIS avec le plugin Lizmap, puis placer `itineraire.js` dans `media/js/<projet>/` du répertoire de projets, avec l'option JavaScript activée pour ce répertoire.
 
-## Notes d'installation (pièges rencontrés)
+### 🛠️ Notes d'installation – Pièges rencontrés et solutions
 
 - **Configuration piéton d'osm2pgrouting** : avec la version utilisée, le fichier `mapconfig_for_pedestrian.xml` fourni avec l'outil contient un commentaire XML invalide (une ligne avec `--addnodes`) et l'import échoue avec « not well-formed ». Faire une copie du fichier, supprimer cette ligne, et passer la copie à `--conf`.
 - **Import séparé voiture / piéton** : deux imports avec `--prefix car_` et `--prefix foot_`.
@@ -86,7 +88,7 @@ docker-compose.yml    base de données et API
 - **Ports** : la base du projet utilise le port 5432. Changer `POSTGIS_PORT` (par exemple 5433) dans le fichier d'environnement de Lizmap pour éviter le conflit.
 - **Après chaque modification de `api/main.py`**, reconstruire l'image : `docker compose up -d --build api`.
 
-## Limites connues
+### 🚧 Limites connues
 
 - La **durée en voiture** est une estimation théorique, calculée à partir des vitesses maximales de la voirie OpenStreetMap, sans circulation, feux ni arrêts. Elle est optimiste.
 - La **gare la plus proche** est choisie à vol d'oiseau, pas selon le trajet par la route.
@@ -95,7 +97,7 @@ docker-compose.yml    base de données et API
 - Les données couvrent uniquement le **Pays basque français** : un clic en dehors de la zone est refusé.
 - Configuration prévue pour un usage **local** : accès à l'API autorisé depuis toutes les origines (CORS), mot de passe de base dans un fichier `.env` à ne pas publier.
 
-## Pistes d'amélioration
+### 💡 Pistes d'amélioration
 
 - Afficher le trajet à pied, avec un choix voiture / à pied.
 - Étendre la zone en important un autre extrait OpenStreetMap.

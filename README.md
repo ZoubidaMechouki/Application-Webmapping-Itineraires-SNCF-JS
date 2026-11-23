@@ -1,4 +1,8 @@
-<h1 align="center">Calcul de l'itinéraire vers les gares SNCF<br>(Lizmap, JavaScript, FastAPI, PostgreSQL/pgRouting, Docker)</h1>
+<div align="center">
+
+# Calcul de l'itinéraire vers les gares SNCF<br>(Lizmap, JavaScript, FastAPI, PostgreSQL/pgRouting, Docker)
+
+</div>
 
 ## Contexte
 

@@ -1,4 +1,4 @@
-# Calcul de l'itinéraire vers les gares SNCF (Lizmap, JavaScript, FastAPI, PostgreSQL/pgRouting, Docker)
+<h1 align="center">Calcul de l'itinéraire vers les gares SNCF<br>(Lizmap, JavaScript, FastAPI, PostgreSQL/pgRouting, Docker)</h1>
 
 ## Contexte
 
@@ -97,3 +97,4 @@ docker-compose.yml    base de données et API
 - Étendre la zone en important un autre extrait OpenStreetMap.
 - Rechercher les gares sans tenir compte des accents (extension `unaccent`).
 - Choisir la gare la plus proche selon le trajet par la route.
+

@@ -1,10 +1,10 @@
-# Calcul d'itinéraire vers une gare (Lizmap, JavaScript, PostgreSQL / pgRouting, FastAPI)
+# Calcul de l'itinéraire vers les gares SNCF (Lizmap, JavaScript, FastAPI, PostgreSQL/pgRouting, Docker)
 
 ## Contexte
 
-Application de webmapping qui permet, dans une carte **Lizmap**, de choisir un point de départ par un clic et d'obtenir l'itinéraire vers une gare du **Pays basque français** : gare d'arrivée choisie par son nom, ou gare la plus proche si aucune n'est choisie.
+Application de webmapping qui permet, dans une carte **Lizmap**, de choisir un point de départ par un clic et d'obtenir l'itinéraire vers une gare du **Pays basque français** : soit vers une gare choisie dans une liste, soit automatiquement vers la plus proche.
 
-Le projet s'inspire d'un cas d'usage de calcul d'itinéraire vers les gares dans Lizmap. Il a été réalisé comme **projet d'apprentissage**, avec des **données ouvertes**, et avec une autre architecture : le routage ne passe plus par une API externe mais par ma propre base **PostgreSQL / PostGIS / pgRouting**.
+Ce projet personnel s'appuie sur les données ouvertes (Open Data) des gares de voyageurs et d'OpenStreetMap. Le calcul d'itinéraire est réalisé directement par ma base de données **PostgreSQL / PostGIS / pgRouting**, sans dépendre d'une API externe de routage.
 
 **Mots-clés** : SIG, webmapping, Lizmap, QGIS, JavaScript, OpenLayers, PostgreSQL, PostGIS, pgRouting, FastAPI, Docker, OpenStreetMap.
 

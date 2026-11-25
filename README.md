@@ -31,6 +31,16 @@ Ce projet personnel s'appuie sur les données ouvertes (Open Data) des gares de 
 - Zoom automatique sur le trajet
 - Bouton de réinitialisation
 
+## Aperçu
+
+![Gare choisie dans la liste, carte centrée dessus](images/figure-1.png)
+
+*Figure 1 – Sélection d'une gare et zoom automatique sur la carte*
+
+![Itinéraire calculé entre le point sélectionné et la gare](images/figure-2.png)
+
+*Figure 2 – Itinéraire généré entre le point sélectionné et la gare , distances et durées*
+
 ### 🏗️ Architecture
 
 ```
@@ -101,4 +111,6 @@ docker-compose.yml    base de données et API
 - Étendre la zone en important un autre extrait OpenStreetMap.
 - Rechercher les gares sans tenir compte des accents (extension `unaccent`).
 - Choisir la gare la plus proche selon le trajet par la route.
+
+📌 Une description détaillée de l'algorithme du code est disponible dans le [document PDF](docs/calculer-itineraire.pdf).
 

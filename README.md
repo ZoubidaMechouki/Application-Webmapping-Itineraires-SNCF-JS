@@ -31,15 +31,21 @@ Ce projet personnel s'appuie sur les données ouvertes (Open Data) des gares de 
 - Zoom automatique sur le trajet
 - Bouton de réinitialisation
 
-## Aperçu
 
-![Gare choisie dans la liste, carte centrée dessus](images/figure-1.png)
+<p align="center">
+  <img src="images/figure-1.png" alt="Gare choisie dans la liste, carte centrée dessus" width="75%">
+  <br>
+  <em><strong>Figure 1 – Sélection d'une gare et zoom automatique sur la carte</strong></em>
+</p>
 
-*Figure 1 – Sélection d'une gare et zoom automatique sur la carte*
+<br>
 
-![Itinéraire calculé entre le point sélectionné et la gare](images/figure-2.png)
+<p align="center">
+  <img src="images/figure-2.png" alt="Itinéraire calculé entre le point sélectionné et la gare" width="75%">
+  <br>
+  <em><strong>Figure 2 – Itinéraire généré entre le point sélectionné et la gare, distances et durées</strong></em>
+</p>
 
-*Figure 2 – Itinéraire généré entre le point sélectionné et la gare , distances et durées*
 
 ### 🏗️ Architecture
 
